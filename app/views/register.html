@@ -1,0 +1,22 @@
+<h2>Register</h2>
+<form class="form-half" role="form" ng-submit="register(user)">
+        <div class="form-group">
+                <label for="username">Account name:</label>
+                <input type="text" class="form-control" id="username" ng-model="user.username" placeholder="Please enter username...">
+        </div>
+        <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" ng-model="user.password" placeholder="Please enter password...">
+        </div>
+        <div class="form-group">
+                <label for="passwordRepeat">Repeat:</label>
+                <input type="password" class="form-control" id="passwordRepeat" ng-model="user.passwordRepeat" placeholder="Please repeat your password...">
+        </div>
+        <div class="form-group">
+                <label for="email">E-Mail:</label>
+                <input type="text" class="form-control" id="email" ng-model="user.email" placeholder="Please enter your email...">
+        </div>
+        <div class="form-group">
+                <button type="submit" class="btn btn-primary">Submit</button>&nbsp;&nbsp;&nbsp;<span class="text-danger" ng-if="error">{{ error }}</span>
+        </div>
+</form>

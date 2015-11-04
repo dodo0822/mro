@@ -1,0 +1,30 @@
+<h1>File Manager</h1>
+<h2>My Files</h2>
+<p>Current path: /{{path}}</p>
+<p><a class="btn btn-primary" href="javascript:void(0)" ng-click="openMkdirDialog()">Create directory</a>&nbsp;&nbsp;<a class="btn btn-info" href="javascript:void(0)" ng-click="openUploadDialog()">Upload files</a></p>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th width="5%">&nbsp;</th>
+			<th width="70%">File Name</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-if="path != ''">
+			<td>&nbsp;</td>
+			<td><a href="javascript:void(0)" ng-click="up()">(../)</a></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr ng-if="list.length == 0">
+			<td>&nbsp;</td>
+			<td>There is no file under this directory.</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr ng-repeat="file in list">
+			<td><i ng-class="{'fa fa-file-text-o': file.type=='FILE', 'fa fa-folder-open-o': file.type=='DIRECTORY'}"></i></td>
+			<td><a href="javascript:void(0)" ng-click="navigate($index)">{{file.pathSuffix}}</a></td>
+			<td><a href="javascript:void(0)" ng-click="remove($index)">Delete</a> | <a href="javascript:void(0)" ng-click="openRenameDialog($index)">Rename</a></td>
+		</tr>
+	</tbody>
+</table>

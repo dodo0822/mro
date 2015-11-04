@@ -1,0 +1,25 @@
+<h1>Home</h1>
+<h2>Jobs</h2>
+<p><a href="javascript:void(0)" class="btn btn-primary" ng-click="openSubmitDialog()">Submit a job</a></p>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Submit Time</th>
+			<th>Complete Time</th>
+			<th>Mode</th>
+			<th>Status</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="job in jobs">
+			<td>{{job._id}}</td>
+			<td>{{job.submitTime}}</td>
+			<td>{{job.finishTime}}</td>
+			<td><span ng-if="job.cluster">Cluster</span><span ng-if="!job.cluster">Standalone</span>
+			<td>{{job.status}}</td>
+			<td><a href="javascript:void(0)" ng-click="viewOutput($index)">View output</a><span ng-if="job.status=='Accepted'"> | <a href="javascript:void(0)" ng-click="remove($index)">Remove</a></span></td>
+		</tr>
+	</tbody>
+</table>

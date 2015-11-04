@@ -1,0 +1,23 @@
+<h2>Submit a job</h2>
+<form ng-init="job.cluster=true" ng-submit="submit(job)">
+	<div class="form-group">
+		<label for="inputName">Input Directory</label>
+		<input type="text" class="form-control" id="inputName" ng-model="job.input" placeholder="Enter input directory name...">
+	</div>
+	<div class="form-group">
+		<label for="outputName">Output Directory</label>
+		<input type="text" class="form-control" id="outputName" ng-model="job.output" placeholder="Enter output directory name...">
+	</div>
+	<div class="form-group">
+		<label for="clusterMode"><input type="checkbox" id="clusterMode" ng-model="job.cluster"> Run in Cluster Mode</label>
+	</div>
+	<div class="form-group">
+		<label for="mapperCode">Mapper Code</label>
+		<textarea class="form-control" id="mapperCode" ng-model="job.mapper" rows="15" placeholder="Paste mapper code here."></textarea>
+	</div>
+	<div class="form-group">
+		<label for="reducerCode">Reducer Code</label>
+		<textarea class="form-control" id="reducerCode" ng-model="job.reducer" rows="15" placeholder="Paste reducer code here."></textarea>
+	</div>
+	<button type="submit" class="ngdialog-button ngdialog-button-primary">Submit</button>&nbsp;&nbsp;<span class="bg-error">{{error}}</span>
+</form>

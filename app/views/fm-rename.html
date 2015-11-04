@@ -1,0 +1,8 @@
+<h2>Rename</h2>
+<form ng-submit="rename(after)">
+	<div class="form-group">
+		<label for="renameName">Name</label>
+		<input type="text" class="form-control" id="renameName" ng-model="after" ng-value="name">
+	</div>
+	<button type="submit" class="btn btn-submit">Submit</button>&nbsp;&nbsp;<span class="bg-error">{{renameError}}</span>
+</form>
