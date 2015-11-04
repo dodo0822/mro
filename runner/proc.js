@@ -2,12 +2,13 @@ var exec = require('child_process').exec;
 var fs = require('fs');
 var WebHDFS = require('webhdfs');
 var rimraf = require('rimraf');
+var config = require('../config');
 
 var hdfs = WebHDFS.createClient({ user: 'dodo0822' });
 
-var controllerPath = '/Users/dodo0822/Downloads/pypy-2.6.1-src/pypy/sandbox/pypy_interact.py';
-var sandboxPath = '/Users/dodo0822/Downloads/pypy-2.6.1-src/pypy/goal/pypy-c';
-var hadoopPath = '/Users/dodo0822/hadoop';
+var controllerPath = config.controllerPath;
+var sandboxPath = config.sandboxPath;
+var hadoopPath = config.hadoopPath;
 
 var db = require('../database');
 var mongoose = require('mongoose');
