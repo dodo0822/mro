@@ -1,8 +1,12 @@
 var bcrypt = require('bcrypt');
 var jwt = require('jwt-simple');
 var moment = require('moment');
+var WebHDFS = require('webhdfs');
+var validator = require('validator');
 var db = require('../database');
 var auth = require('../auth');
+
+var hdfs = WebHDFS.createClient({ user: 'dodo0822' });
 
 module.exports = function(app) {
 	app.post('/api/user/register', function(req, res) {
@@ -35,13 +39,20 @@ module.exports = function(app) {
 					password: hash,
 					email: req.body.email
 				});
-				user.save(function(err) {
+				user.save(function(err, user) {
 					if(err) {
 						res.send({ status: 'error', message: 'Internal server error.' });
 						console.log('E: cannot save user data', err);
 						return;
 					}
-					res.send({ status: 'ok' });
+					hdfs.mkdir('/mro/' + user._id, function(err) {
+						if(err) {
+							res.send({ status: 'error', message: 'Internal server error.' });
+							console.log('E: cannot make user dir: ', err);
+							return;
+						}
+						res.send({ status: 'ok' });
+					});
 				});
 			});
 		});
